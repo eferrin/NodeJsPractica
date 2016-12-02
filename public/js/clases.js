@@ -32,5 +32,5 @@ var Articulo = function(id, titulo, contenido){
 
 // devolver ek html del articulo
 Articulo.prototype.render=function(){
-  return '<article><div><h1><a data-id-noticia="'+this.id+'" href=noticia.html?id='+this.id+'">'+this.titulo+'</a>/h3></div><div><p>"+this.contenido+"</p></div></article>"'
+  return '<article><div class= "titulo" ><h1><a data-id-noticia="'+this.id+'" href="noticia.html?id='+this.id+'">'+this.titulo+'</a></h1></div><div><p>'+this.contenido+'</p></div></article>'
 }

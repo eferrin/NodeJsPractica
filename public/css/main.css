@@ -11,10 +11,9 @@ header #logo img{
   border: 3px solid blue;
   width: 100%;
 }
-header ul.menu{
-  text-align: center;
+header ul.menu {
   background: #F4F4F4;
-  border: 1px dashed white;
+  border: 1px solid #7C7C7C;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -24,23 +23,21 @@ header ul.menu li {
   float: left;
   width: 20%;
 }
-header ul.links a{
+
+header ul.menu li a {
   border-left: 1px solid #FFF;
   border-right: 1px solid #7C7C7C;
-  color: white;
-  font-size: 18px;
-  margin: 10px;
+  color: #333;
   display: block;
   padding: .3em;
   text-decoration: none;
 }
-header .links a:hover{
-  color: red;
-}
-.articulo {
+
+article {
   background-color: #fff;
   border: 1px solid white;
 }
+
 footer{
   background-color: red;
 }
