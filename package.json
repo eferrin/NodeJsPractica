@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/eferrin/NodeJsPractica/issues"
   },
-  "homepage": "https://github.com/eferrin/NodeJsPractica#readme"
+  "homepage": "https://github.com/eferrin/NodeJsPractica#readme",
+  "dependencies": {
+    "mu2": "^0.5.21"
+  }
 }
