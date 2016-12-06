@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/eferrin/NodeJsPractica#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "mu2": "^0.5.21"
   }
 }

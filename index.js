@@ -4,45 +4,38 @@ var port = 3000;
 var fs = require('fs');
 var url = require("url");
 var visitas= require("./app/visitas")
+var express = require('express')
+var app=express();
+//app.use(express.staticProvider(__dirname + '/public'));
+app.use(express.static('public'));
+app.get("/index", function(req,res){
+  res.render('index.html');
+});
 
-var server = http.createServer()
+app.get("/", function(req, res){
+  visitas.cargarIP(req.ip);
+  res.render('index.html');
+});
 
-server.on("request", function(req,res){
-  var urlData=url.parse(req.url);
-  var path = urlData.pathname;
-  visitas.cargarIP(req.connection.remoteAddress);
-  if (path=="/"){
-    path="/index.html";
-
-  }
-  if (path=="/stats"){
+app.get("/stats", function(req, res){
+  if (req.query.usuario=="ADMIN" && req.query.password=="ADMIN"){
     res.writeHead(200);
     res.end(visitas.get());
   }else{
-    var filePath= "public"+path;
-    fs.exists(filePath,function(exists){
-      if(exists){
-        fs.readFile("public"+path, function(err,data){
-          if (err){
-            res.writeHead(500);
-            res.end("Ha ocurrido algo malo")
-          }else{
-            res.end(data);
-          }
-        })
-      }else {
-        res.writeHead(404);
-        res.end("No existe")
-      }
-    });
-
+    res.writeHead(404);
+    res.end("No tiene permisos");
   }
 });
 
-server.listen(process.env.PORT || port, (err) => {
+app.get("/noticias", function(req, res){
+
+  res.render('noticia.html');
+});
+
+app.listen(process.env.PORT || port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }
 
   console.log(`server is listening on ${port}`)
-})
+});
