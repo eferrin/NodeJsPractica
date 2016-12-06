@@ -1,0 +1,52 @@
+body {
+  background-color: #333;
+}
+
+header {
+  background-color: #543121;
+}
+header #logo {
+  text-align: center;
+}
+header #logo img{
+  border: 3px solid blue;
+  width: 100%;
+}
+header ul.menu {
+  background: #F4F4F4;
+  border: 1px solid #7C7C7C;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+header ul.menu li {
+  float: left;
+  width: 20%;
+}
+
+header ul.menu li a {
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #7C7C7C;
+  color: #333;
+  display: block;
+  padding: .3em;
+  text-decoration: none;
+}
+
+article {
+  background-color: #fff;
+  border: 1px solid white;
+}
+
+footer{
+  background-color: red;
+}
+
+
+/*
+Comments
+. <----- class selector ej: .content
+# <----- id selector ej: #articulos
+body <-- element selector
+*/

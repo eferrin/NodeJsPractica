@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  {{>partials/head}}
+    <body>
+    {{>partials/header}}
+    {{#articulo}}
+    <article>
+      <div class= "titulo" >
+        <h1>{{titulo}}</h1>
+      </div>
+      <div>
+        <p>{{contenido}}</p>
+      </div>
+    </article>
+    {{/articulo}}
+    </div>
+    <footer>
+      <div>Footer</div>
+    </footer>
+  </body>
+</html>

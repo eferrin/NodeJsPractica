@@ -3,18 +3,32 @@ var http = require('http');
 var port = 3000;
 var fs = require('fs');
 var url = require("url");
-var visitas= require("./app/visitas")
-var express = require('express')
+var visitas= require("./app/visitas");
+var noticias= require("./app/noticias");
+var express = require('express');
 var app=express();
-//app.use(express.staticProvider(__dirname + '/public'));
-app.use(express.static('public'));
+var mustacheExpress = require('mustache-express');
+
+app.engine('mustache', mustacheExpress());
+
+
+app.set('view engine', 'mustache');
+app.set('views', './views');
+
+noticias.cargar();
+
+
 app.get("/index", function(req,res){
-  res.render('index.html');
+  var articulos=noticias.get();
+  console.log(articulos);
+  res.render('layouts/index', {titulo: "TestNews",'articulos': articulos});
 });
 
 app.get("/", function(req, res){
   visitas.cargarIP(req.ip);
-  res.render('index.html');
+  var articulos=noticias.get();
+
+  res.render('layouts/index', {'title': "TestNews", 'articulos': articulos});
 });
 
 app.get("/stats", function(req, res){
@@ -27,10 +41,16 @@ app.get("/stats", function(req, res){
   }
 });
 
-app.get("/noticias", function(req, res){
-
-  res.render('noticia.html');
+app.get("/noticia/:id", function(req, res){
+  var noticia=noticias.getbyId(req.params.id);
+  //console.log(req.params.id);
+  //console.log(noticias.get());
+  //console.log(noticia);
+  res.render('layouts/noticia',{'title': "Noticia", 'articulo': noticia});
 });
+
+
+app.use(express.static('public'));
 
 app.listen(process.env.PORT || port, (err) => {
   if (err) {
