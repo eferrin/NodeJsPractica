@@ -13,10 +13,9 @@ module.exports={
     return articulos;
   },
   getbyId: function(id){
-    
+
     for ( i=0; i<articulos.length;i++){
-      console.log(articulos[i].id);
-      console.log(id);
+      
       if(articulos[i].id==id){
         resultado= new Object();
         resultado.titulo=articulos[i].titulo;

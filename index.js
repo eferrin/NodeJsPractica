@@ -20,8 +20,7 @@ noticias.cargar();
 
 app.get("/index", function(req,res){
   var articulos=noticias.get();
-  console.log(articulos);
-  res.render('layouts/index', {titulo: "TestNews",'articulos': articulos});
+  res.render('layouts/index', {'title': "TestNews",'articulos': articulos});
 });
 
 app.get("/", function(req, res){
@@ -43,9 +42,7 @@ app.get("/stats", function(req, res){
 
 app.get("/noticia/:id", function(req, res){
   var noticia=noticias.getbyId(req.params.id);
-  //console.log(req.params.id);
-  //console.log(noticias.get());
-  //console.log(noticia);
+
   res.render('layouts/noticia',{'title': "Noticia", 'articulo': noticia});
 });
 
